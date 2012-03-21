@@ -5,20 +5,23 @@ require "base64"
 
 require File.expand_path('../lib/datapower/version', __FILE__)
 
-Gem::Specification.new do |gem|
-  gem.authors       = ["tnarik"]
-  gem.email         = Base64.decode64("dG5hcmlrQGdtYWlsLmNvbQ==\n")
-  gem.summary       = "Datapower administration gem"
-  gem.description   = "#{gem.summary}. This allows command line interaction with Datapower devices"
-  gem.homepage      = "http://lecafeautomatique.co.uk"
+Gem::Specification.new do |s|
+  s.authors       = ["tnarik"]
+  s.email         = Base64.decode64("dG5hcmlrQGdtYWlsLmNvbQ==\n")
+  s.summary       = "Datapower administration gem"
+  s.description   = "#{s.summary}. This allows command line interaction with Datapower devices"
+  s.homepage      = "http://lecafeautomatique.co.uk"
 
-  gem.files         = `git ls-files`.split($\)
-  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.name          = "datapower"
-  gem.require_paths = ["lib"]
-  gem.version       = Datapower::VERSION
+  s.files         = `git ls-files`.split($\)
+  s.executables   = s.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  s.test_files    = s.files.grep(%r{^(test|spec|features)/})
+  s.name          = "datapower"
+  s.require_paths = ["lib"]
+  s.version       = Datapower::VERSION
   
+  # generate
+  s.add_development_dependency 'changelog'
+    
   begin
     require "changelog"
   rescue LoadError
